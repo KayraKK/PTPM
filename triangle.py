@@ -1,5 +1,7 @@
 import math
 
+EPS = 1e-9
+
 while True:
     print("\nНовая проверка")
 
@@ -10,7 +12,12 @@ while True:
         print([(-2, -2)] * 3)
         continue
 
-    if a <= 0 or b <= 0 or c <= 0 or a + b <= c or a + c <= b or b + c <= a:
+    if a <= 0 or b <= 0 or c <= 0:
+        print("не треугольник")
+        print([(-1, -1)] * 3)
+        continue
+
+    if (a + b <= c + EPS) or (a + c <= b + EPS) or (b + c <= a + EPS):
         print("не треугольник")
         print([(-1, -1)] * 3)
         continue
@@ -23,7 +30,7 @@ while True:
         print("разносторонний")
 
     cx = (a * a + b * b - c * c) / (2 * a)
-    cy = math.sqrt(b * b - cx * cx)
+    cy = math.sqrt(max(0.0, b * b - cx * cx))
     xs, ys = [0, a, cx], [0, 0, cy]
 
     w, h = max(xs) - min(xs), max(ys) - min(ys)
