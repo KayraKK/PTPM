@@ -1,16 +1,20 @@
 import math
 
-try:
-    a, b, c = float(input()), float(input()), float(input())
-except:
-    print("")
-    print([(-2, -2)] * 3)
-    exit()
+while True:
+    print("\nНовая проверка")
 
-if a <= 0 or b <= 0 or c <= 0 or a + b <= c or a + c <= b or b + c <= a:
-    print("не треугольник")
-    print([(-1, -1)] * 3)
-else:
+    try:
+        a, b, c = float(input("a: ")), float(input("b: ")), float(input("c: "))
+    except:
+        print("")
+        print([(-2, -2)] * 3)
+        continue
+
+    if a <= 0 or b <= 0 or c <= 0 or a + b <= c or a + c <= b or b + c <= a:
+        print("не треугольник")
+        print([(-1, -1)] * 3)
+        continue
+
     if a == b == c:
         print("равносторонний")
     elif a == b or a == c or b == c:
